@@ -4,15 +4,9 @@ import pandas as pd
 st.set_page_config(layout="wide")
 st.title("Presetting Performance Dashboard")
 
-data = {
-    "Datum": ["2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10"],
-    "Anwahlen": [156, 130, 105, 95],
-    "Erreicht": [19, 17, 21, 15],
-    "Zielgruppe": [11, 11, 15, 11],
-    "Termine": [3, 4, 7, 5]
-}
+csv_url = "https://docs.google.com/spreadsheets/d/1gJjgZT313SNeXrHHK06t81jJG4LmkAOEMcXhmiL-EoQ/export?format=csv&gid=1484787871"
+df = pd.read_csv(csv_url)
 
-df = pd.DataFrame(data)
 df["Terminquote"] = df["Termine"] / df["Zielgruppe"]
 
 gesamt_termine = df["Termine"].sum()
